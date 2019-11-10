@@ -1,6 +1,6 @@
 {
     "type": "postgres",
-    "host": "{{ change_by_your_ip }}",
+    "host": "192.168.1.107",
     "port": 5432,
     "username": "postgres",
     "password": "password",
@@ -17,7 +17,7 @@
       "./src/migrations/**/*.ts"
     ],
     "cli": {
-      "entitiesDir": "./src/entities",
+      "entitiesDir": "./src/**/*",
       "migrationsDir": "./src/migrations",
       "subscribersDir": "./src/subscribers"
     }
