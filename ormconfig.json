@@ -1,0 +1,25 @@
+{
+    "type": "postgres",
+    "host": "{{ change_by_your_ip }}",
+    "port": 5432,
+    "username": "postgres",
+    "password": "password",
+    "database": "nest",
+    "synchronize": false,
+    "logging": false,
+    "entities": [
+      "./src/**/*.model.ts"
+    ],
+    "subscribers": [
+      "./src/subscribers/**/*.ts"
+    ],
+    "migrations": [
+      "./src/migrations/**/*.ts"
+    ],
+    "cli": {
+      "entitiesDir": "./src/entities",
+      "migrationsDir": "./src/migrations",
+      "subscribersDir": "./src/subscribers"
+    }
+  }
+  
