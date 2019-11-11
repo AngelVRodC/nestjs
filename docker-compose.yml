@@ -6,7 +6,7 @@ services:
       - ./.env
     ports:
       - "0.0.0.0:3000:3000"
-    command: "yarn start"
+    command: "yarn start:dev"
   db:
     image: postgres:12
     environment:
