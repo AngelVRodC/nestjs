@@ -12,7 +12,12 @@
     "member-ordering": [false],
     "interface-name": [false],
     "arrow-parens": false,
-    "object-literal-sort-keys": false
+    "object-literal-sort-keys": false,
+    "no-console": false,
+    "match-default-export-name": false,
+    "no-import-side-effect": false,
+    "strict-boolean-expressions": false,
+    "trailing-comma": false,
   },
   "rulesDirectory": []
 }
