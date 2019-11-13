@@ -30,6 +30,12 @@ const options: TableOptions = {
       isNullable: false
     },
     {
+      name: 'is_enabled',
+      type: 'boolean',
+      isNullable: false,
+      default: true
+    },
+    {
       name: 'updated_at',
       type: 'timestamp with time zone',
       isUnique: true,
@@ -46,17 +52,14 @@ const options: TableOptions = {
   ]
 };
 
-const customer = new Table(options)
+const customer = new Table(options);
 
 export class Customers1573424423658 implements MigrationInterface {
-
   public async up(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.createTable(customer, true)
-
+    await queryRunner.createTable(customer, true);
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('customers')
+    await queryRunner.dropTable('customers');
   }
-
 }

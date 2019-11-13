@@ -6,27 +6,29 @@ import { Connection } from 'typeorm';
 import { CustomersModule } from './customers/customers.module';
 
 @Module({
-  imports: [TerminusModule.forRootAsync({
-    useClass: HealthCheckService,
-  }),
-  TypeOrmModule.forRoot(),
-    CustomersModule],
+  imports: [
+    TerminusModule.forRootAsync({
+      useClass: HealthCheckService
+    }),
+    TypeOrmModule.forRoot(),
+    CustomersModule
+  ]
 })
 export class AppModule {
   constructor(private connection: Connection) {
     // Automatic migrations
-    // this.runMigrations();
+    this.runMigrations();
   }
 
   public runMigrations = async () => {
     const migrationsPending = await this.connection.showMigrations();
     if (migrationsPending) {
-      const migrations = await this.connection.runMigrations({ transaction: 'all'  });
+      const migrations = await this.connection.runMigrations({ transaction: 'all' });
       migrations.forEach((migration) => {
-        Logger.log(`Migration ${migration.name} success`)
-      })
+        Logger.log(`Migration ${migration.name} success`);
+      });
     } else {
       Logger.log('No migrations pending');
     }
-  }
+  };
 }

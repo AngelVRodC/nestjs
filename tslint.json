@@ -17,7 +17,7 @@
     "match-default-export-name": false,
     "no-import-side-effect": false,
     "strict-boolean-expressions": false,
-    "trailing-comma": false,
+    "trailing-comma": false
   },
   "rulesDirectory": []
 }
