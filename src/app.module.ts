@@ -21,7 +21,10 @@ export class AppModule {
   public runMigrations = async () => {
     const migrationsPending = await this.connection.showMigrations();
     if (migrationsPending) {
-      await this.connection.runMigrations({ transaction: 'all'  });
+      const migrations = await this.connection.runMigrations({ transaction: 'all'  });
+      migrations.forEach((migration) => {
+        Logger.log(`Migration ${migration.name} success`)
+      })
     } else {
       Logger.log('No migrations pending');
     }
