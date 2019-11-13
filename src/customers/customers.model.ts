@@ -1,3 +1,4 @@
+import { CustomerDto } from './customers.dto';
 import {
   BaseEntity,
   Column,
@@ -30,4 +31,17 @@ export class Customer extends BaseEntity {
     nullable: true,
   })
   public updatedAt: string;
+
+  constructor(input: CustomerDto) {
+    super()
+    if (input) {
+      this.setValues(input)
+    }
+  }
+
+  setValues(input: CustomerDto) {
+    Object.keys(input).forEach((key: string) => {
+      this[key] = input[key];
+    })
+  }
 }
