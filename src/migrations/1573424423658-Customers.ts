@@ -1,8 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 import { TableOptions } from 'typeorm/schema-builder/options/TableOptions';
 
-
-
 const options: TableOptions = {
   name: 'customers',
   columns: [
