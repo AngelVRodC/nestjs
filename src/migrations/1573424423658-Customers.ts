@@ -1,7 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
-import { TableOptions } from 'typeorm/schema-builder/options/TableOptions';
 
-const options: TableOptions = {
+const customer = new Table({
   name: 'customers',
   columns: [
     {
@@ -50,9 +49,7 @@ const options: TableOptions = {
       default: 'now()'
     }
   ]
-};
-
-const customer = new Table(options);
+});
 
 export class Customers1573424423658 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
