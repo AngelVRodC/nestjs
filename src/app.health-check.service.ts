@@ -15,7 +15,7 @@ export class HealthCheckService implements TerminusOptionsFactory {
       healthIndicators: [
         // TODO: Database test connection
         async () => ({ health: {
-          "status": "ok",
+          status: 'ok',
         }}),
       ],
     };
