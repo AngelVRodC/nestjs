@@ -1,8 +1,10 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
-import { ClassValidatorPipe } from './commons/class-validator.pipe';
+
+import { ClassValidatorPipe } from './@shared/class-validator/class-validator.pipe';
 
 export const prefix = 'microservice-prefix';
+
+import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

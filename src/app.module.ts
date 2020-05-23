@@ -3,24 +3,30 @@ import { TerminusModule } from '@nestjs/terminus';
 import { HealthCheckService } from './app.health-check.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Connection } from 'typeorm';
-import { CustomersModule } from './customers/customers.module';
+import { CustomersModule } from './customers-module/customers.module';
+import { postgresConfig } from './typeorm/postgres-connection';
+import * as dotenv from 'dotenv';
 
+dotenv.config();
 @Module({
   imports: [
     TerminusModule.forRootAsync({
       useClass: HealthCheckService
     }),
-    TypeOrmModule.forRoot(),
+    TypeOrmModule.forRoot(postgresConfig),
     CustomersModule
   ]
 })
 export class AppModule {
   constructor(private connection: Connection) {
-    // Automatic migrations
-    this.runMigrations();
+    const { RUN_MIGRATIONS } =  process.env;
+    if (RUN_MIGRATIONS) {
+      this.runMigrations();
+    }
   }
 
   public runMigrations = async () => {
+    Logger.log(`Run Migrations`);
     const migrationsPending = await this.connection.showMigrations();
     if (migrationsPending) {
       const migrations = await this.connection.runMigrations({ transaction: 'all' });
@@ -30,5 +36,5 @@ export class AppModule {
     } else {
       Logger.log('No migrations pending');
     }
-  };
+  }
 }

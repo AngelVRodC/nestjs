@@ -66,12 +66,12 @@ const foreignKey = new TableForeignKey({
 });
 
 export class Addresses1573761546411 implements MigrationInterface {
-  public async up(queryRunner: QueryRunner): Promise<any> {
+  public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(addresses, true);
     await queryRunner.createForeignKey(addresses, foreignKey);
   }
 
-  public async down(queryRunner: QueryRunner): Promise<any> {
+  public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.dropForeignKey(addresses, foreignKey);
     await queryRunner.dropTable(addresses);
   }
